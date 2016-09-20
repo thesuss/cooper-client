@@ -30,14 +30,16 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
+  $scope.doLogin = function () {
+    $auth.submitLogin($scope.loginData)
+    .then(function (resp) {
+      // handle success response
       $scope.closeLogin();
-    }, 1000);
+    })
+    .catch(function (error) {
+      // handle error response
+      $scope.errorMessage = error;
+    });
   };
 });
 
