@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+var app = angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+app.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -38,5 +38,19 @@ angular.module('starter.controllers', [])
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
+  };
+});
+
+
+app.controller('TestController', function($scope) {
+  $scope.data = {};
+  $scope.calculateCooper = function() {
+    var person = new Person({
+      gender: $scope.data.gender,
+      age: $scope.data.age
+    });
+    person.assessCooper($scope.data.distance);
+    $scope.person = person;
+    console.log($scope.person)
   };
 });
