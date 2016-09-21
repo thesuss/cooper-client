@@ -57,8 +57,13 @@ app.controller('AppCtrl', function($rootScope,
 });
 
 app.controller('PerformanceCtrl', function($scope, performaceData){
-  $scope.saveData = function(){
-
+  $scope.saveData = function(person){
+    data = {performace_data: {data: {message: person.cooperMessage}}}
+    performaceData.save(data, function(response){
+      console.log(response);
+    }, function(error){
+      console.log(error);
+    })
   };
   $scope.retrieveData = function(){
 
