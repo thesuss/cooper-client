@@ -114,8 +114,9 @@ app.controller('DataCtrl', function($scope, $stateParams){
       count += entry.data.message == value ? 1 : 0;
     });
     return count;
+    console.log(count);
   }
-  })
+ })
 
 app.controller('TestController', function($scope) {
   $scope.gender = ['Male', 'Female']
