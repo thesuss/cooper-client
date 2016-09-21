@@ -33,6 +33,9 @@ app.controller('AppCtrl', function($rootScope,
   $scope.login = function() {
     $scope.modal.show();
   };
+  angular.forEach($scope.labels, function(label){
+    $scope.data.push(getCount($scope.savedDataCollection, label));
+  });
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function () {
@@ -101,7 +104,18 @@ app.controller('DataCtrl', function($scope, $stateParams){
   $scope.$on('$ionicView.enter', function () {
     $scope.savedDataCollection = $stateParams.savedDataCollection;
   });
-})
+
+  angular.forEach($scope.labels, function(label){
+    $scope.data.push(getCount($scope.savedDataCollection, label));
+  });
+  function getCount(arr, value){
+    var count = 0;
+    angular.forEach(arr, function(entry){
+      count += entry.data.message == value ? 1 : 0;
+    });
+    return count;
+  }
+  })
 
 app.controller('TestController', function($scope) {
   $scope.gender = ['Male', 'Female']
