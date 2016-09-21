@@ -59,7 +59,7 @@ app.controller('AppCtrl', function($rootScope,
 app.controller('PerformanceCtrl', function($scope, performaceData, $ionicLoading, $ionicPopup){
 
   $scope.saveData = function(person){
-    var data = {performance_data: {data: {message: person.cooperMessage}}};
+    var data = {performance_data: {data: {message: person.message}}};
     $ionicLoading.show({
       template: 'Saving...'
     });
@@ -73,7 +73,16 @@ app.controller('PerformanceCtrl', function($scope, performaceData, $ionicLoading
   };
 
   $scope.retrieveData = function(){
-    //not used yet
+    $ionicLoading.show({
+      template: 'Retrieving data...'
+    });
+    performaceData.query({}, function(response){
+      $state.go('app.data', {savedDataCollection: response.entries});
+      $ionicLoading.hide();
+    }, function(error){
+      $ionicLoading.hide();
+      $scope.showAlert('Failure', error.statusText);
+    })
   };
 
   $scope.showAlert = function(message, content) {
