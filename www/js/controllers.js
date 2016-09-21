@@ -56,14 +56,15 @@ app.controller('AppCtrl', function($rootScope,
 
 });
 
-app.controller('PerformanceCtrl', function($scope, performaceData, $ionicLoading, $ionicPopup){
+app.controller('PerformanceCtrl', function($state, $scope, performanceData, $ionicLoading, $ionicPopup){
 
   $scope.saveData = function(person){
-    var data = {performance_data: {data: {message: person.message}}};
+    var send_data = { performance_data: { data: { message: person.message } } };
+
     $ionicLoading.show({
       template: 'Saving...'
     });
-    performaceData.save(data, function(response){
+    performanceData.save(send_data, function(response){
       $ionicLoading.hide();
       $scope.showAlert('Sucess', response.message);
     }, function(error){
@@ -76,7 +77,7 @@ app.controller('PerformanceCtrl', function($scope, performaceData, $ionicLoading
     $ionicLoading.show({
       template: 'Retrieving data...'
     });
-    performaceData.query({}, function(response){
+    performanceData.query({}, function(response){
       $state.go('app.data', {savedDataCollection: response.entries});
       $ionicLoading.hide();
     }, function(error){
