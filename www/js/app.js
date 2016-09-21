@@ -6,6 +6,14 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth'])
 //angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ng-token-auth', 'ngResource'])
+.constant('API_URL', 'https://sl-cooper-api.herokuapp.com/api/v1')
+
+.config(function ($authProvider, API_URL) {
+  $authProvider.configure({
+    apiUrl: API_URL
+  });
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -30,6 +38,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ng-token-auth'])
       abstract: true,
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
+    })
+    .state('app.data', {
+      url: '/data',
+      params: {
+        savedDataCollection: {}
+      },
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/test/data.html',
+          controller: 'DataCtrl'
+        }
+      }
     })
     .state('app.test', {
       url: '/test',
