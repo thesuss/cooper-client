@@ -1,4 +1,4 @@
-var app = angular.module('starter.controllers', [])
+var app = angular.module('starter.controllers', ['starter.services'])
 
 app.controller('AppCtrl', function($rootScope,
                                    $scope,
@@ -56,7 +56,14 @@ app.controller('AppCtrl', function($rootScope,
 
 });
 
+app.controller('PerformanceCtrl', function($scope, performaceData){
+  $scope.saveData = function(){
 
+  };
+  $scope.retrieveData = function(){
+
+  };
+})
 app.controller('TestController', function($scope) {
   $scope.gender = ['Male', 'Female']
   $scope.ageValues = {
