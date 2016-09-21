@@ -96,6 +96,12 @@ app.controller('PerformanceCtrl', function($scope, performaceData, $ionicLoading
   };
 
 })
+app.controller('DataCtrl', function($scope, $stateParams){
+  $scope.$on('$ionicView.enter', function () {
+    $scope.savedDataCollection = $stateParams.savedDataCollection;
+  });
+})
+
 app.controller('TestController', function($scope) {
   $scope.gender = ['Male', 'Female']
   $scope.ageValues = {
