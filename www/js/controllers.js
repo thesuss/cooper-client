@@ -28,7 +28,6 @@ app.controller('AppCtrl', function($rootScope,
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
-
   // Open the login modal
   $scope.login = function() {
     $scope.modal.show();
