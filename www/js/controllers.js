@@ -57,6 +57,10 @@ app.controller('AppCtrl', function($rootScope,
      $scope.currentUser = angular.extend(user, $auth.retrieveData('auth_headers'));
    });
 
+   $scope.doLogout = function () {
+     $scope.currentUser = '';
+    };
+
 });
 
 app.controller('PerformanceCtrl', function($state, $scope, performanceData, $ionicLoading, $ionicPopup){
