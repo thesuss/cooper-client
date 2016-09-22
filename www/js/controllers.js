@@ -61,7 +61,20 @@ app.controller('AppCtrl', function($rootScope,
     };
 
 });
+app.controller('regCtrl' , function($scope){
+  $scope.registerUser = function () {
+    $auth.submitRegistration($scope.regData)
+      .then(function (resp) {
+        // handle success response
+        $ionicLoading.hide();
+        $scope.closeLogin();
+      })
+      .catch(function (error) {
+        $scope.errorMessage = error;
+      });
+   };
 
+});
 app.controller('PerformanceCtrl', function($state, $scope, performanceData, $ionicLoading, $ionicPopup){
 
   $scope.saveData = function(person){
