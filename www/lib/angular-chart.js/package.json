@@ -14,10 +14,7 @@
     "docker-test": "docker run --rm -i -v $(pwd)/coverage/:/src/coverage/ -v $(pwd)/test/:/src/test/ -v $(pwd)/angular-chart.js:/src/angular-chart.js angular-chart.js",
     "test": "gulp check"
   },
-  "author": {
-    "name": "Jerome Touffe-Blin",
-    "email": "jtblin@gmail.com"
-  },
+  "author": "Jerome Touffe-Blin <jtblin@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/jtblin/angular-chart.js.git"
@@ -68,33 +65,5 @@
   "dependencies": {
     "angular": "1.x",
     "chart.js": "2.x"
-  },
-  "gitHead": "56bcafb0979d6f61ec0fe2a770a74697a38bc3fe",
-  "bugs": {
-    "url": "https://github.com/jtblin/angular-chart.js/issues"
-  },
-  "_id": "angular-chart.js@1.0.2",
-  "_shasum": "0b76d45f83fc01474662bc78414a0669ec01d1c8",
-  "_from": "angular-chart.js@latest",
-  "_npmVersion": "3.9.5",
-  "_nodeVersion": "6.2.2",
-  "_npmUser": {
-    "name": "jtblin",
-    "email": "jtblin@gmail.com"
-  },
-  "maintainers": [
-    {
-      "name": "jtblin",
-      "email": "jtblin@gmail.com"
-    }
-  ],
-  "dist": {
-    "shasum": "0b76d45f83fc01474662bc78414a0669ec01d1c8",
-    "tarball": "https://registry.npmjs.org/angular-chart.js/-/angular-chart.js-1.0.2.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/angular-chart.js-1.0.2.tgz_1471598008930_0.7436023156624287"
-  },
-  "_resolved": "https://registry.npmjs.org/angular-chart.js/-/angular-chart.js-1.0.2.tgz"
+  }
 }
