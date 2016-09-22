@@ -61,21 +61,21 @@ app.controller('AppCtrl', function($rootScope,
     };
 
 });
-app.controller('regCtrl' , function($scope){
-  $scope.registerUser = function () {
-    $ionicLoading.show({
-      template: 'Loading...'
-    });
-    $auth.submitRegistration($scope.regData)
-      .then(function (resp) {
-        // handle success response
-        $ionicLoading.hide();
-      })
-      .catch(function (error) {
-        $scope.errorMessage = error;
-      });
-   };
+
+app.controller('regCtrl', function($scope, $auth, registrationData){
+  $scope.registerUser = function (user) {
+    send = $scope.registerData
+    var send_data = { send }
+    $auth.submitRegistration(send_data, function(response){
+      $ionicLoading.hide();
+      $scope.showAlert('Sucess', 'User created');
+    }, function(error){
+      $ionicLoading.hide();
+      $scope.showAlert('Failure', error.statusText);
+    })
+  }
 });
+
 app.controller('PerformanceCtrl', function($state, $scope, performanceData, $ionicLoading, $ionicPopup){
 
   $scope.saveData = function(person){

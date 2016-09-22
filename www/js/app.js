@@ -60,6 +60,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       },
     })
+    .state('app.reg', {
+      url: '/reg',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/reg.html',
+          controller: 'regCtrl'
+        }
+      },
+    })
     .state('app.about', {
       url: '/about',
       views: {
