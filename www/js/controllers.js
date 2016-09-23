@@ -62,18 +62,54 @@ app.controller('AppCtrl', function($rootScope,
 
 });
 
-app.controller('regCtrl', function($scope, $auth, registrationData){
-  $scope.registerUser = function (user) {
-    send = $scope.registerData
-    var send_data = { send }
-    $auth.submitRegistration(send_data, function(response){
-      $ionicLoading.hide();
-      $scope.showAlert('Sucess', 'User created');
-    }, function(error){
-      $ionicLoading.hide();
-      $scope.showAlert('Failure', error.statusText);
-    })
-  }
+app.controller('EditCtrl', function($scope, $ionicLoading, $auth) {
+  $scope.editData = {};
+
+  $scope.editProfile = function() {
+    $ionicLoading.show({
+      template: 'Updating profile...'
+    });
+    console.log($scope.editData);
+    $auth.updateAccount($scope.editData)
+      .then(function (resp) {
+        console.log(resp);
+        // handle success response
+        $ionicLoading.hide();
+      })
+      .catch(function (error) {
+        $ionicLoading.hide();
+        $scope.errorMessage = error;
+      });
+  };
+ })
+
+app.controller('regCtrl', function($scope, $ionicLoading, $auth, registrationData, $ionicPopup){
+  $scope.registrationData = {};
+
+  $scope.showAlert = function(message, content) {
+    var alertPopup = $ionicPopup.alert({
+      title: message,
+      template: content
+    });
+    alertPopup.then(function(res) {
+    // Place some action here if needed...
+    });
+  };
+  $scope.registerUser = function() {
+    $ionicLoading.show({
+      template: 'Creating account...'
+    });
+    $auth.submitRegistration($scope.registrationData)
+      .then(function (resp) {
+        // handle success response
+        $ionicLoading.hide();
+        $scope.showAlert('Sucess', 'Account created');
+      })
+      .catch(function (error) {
+        $ionicLoading.hide();
+        $scope.errorMessage = error;
+      });
+  };
 });
 
 app.controller('PerformanceCtrl', function($state, $scope, performanceData, $ionicLoading, $ionicPopup){
